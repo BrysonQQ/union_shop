@@ -33,8 +33,8 @@ class HomeScreen extends StatelessWidget {
     Navigator.pushNamed(context, '/product');
   }
 
-  void doNothing() {
-    // Buttons that don't work yet - no popup, just do nothing
+  void placeholderCallbackForButtons() {
+    // This is the event handler for buttons that don't work yet
   }
 
   @override
@@ -93,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: doNothing,
+                                onPressed: placeholderCallbackForButtons,
                               ),
                               IconButton(
                                 icon: const Icon(
@@ -106,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: doNothing,
+                                onPressed: placeholderCallbackForButtons,
                               ),
                               IconButton(
                                 icon: const Icon(
@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: doNothing,
+                                onPressed: placeholderCallbackForButtons,
                               ),
                             ],
                           ),
@@ -191,7 +191,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 32),
                         ElevatedButton(
-                          onPressed: doNothing,
+                          onPressed: placeholderCallbackForButtons,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF4d2963),
                             foregroundColor: Colors.white,
@@ -262,7 +262,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 48),
                     ElevatedButton(
-                      onPressed: doNothing,
+                      onPressed: placeholderCallbackForButtons,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF4d2963),
                         foregroundColor: Colors.white,
