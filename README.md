@@ -30,14 +30,14 @@ Below is a quick guide for each option. For more information, you can refer to [
 - Create a new workspace (template selection not needed for this coursework)
 - Clone your forked repository using the command palette
 
-**University Computers:**
+University Computers:
 
 - Open [AppsAnywhere](https://appsanywhere.port.ac.uk/sso) and launch the following in the given order:
   - Git
   - Flutter And Dart SDK
   - Visual Studio Code
 
-**Personal Windows Computer:**
+Personal Windows Computer:
 
 - Install [Chocolatey package manager](https://chocolatey.org/install)
 - Run in PowerShell (as Administrator):
@@ -46,7 +46,7 @@ Below is a quick guide for each option. For more information, you can refer to [
   choco install git vscode flutter -y
   ```
 
-**Personal macOS Computer:**
+Personal macOS Computer:
 
 - Install [Homebrew package manager](https://brew.sh/)
 - Run in Terminal:
@@ -54,8 +54,6 @@ Below is a quick guide for each option. For more information, you can refer to [
   ```bash
   brew install --cask visual-studio-code flutter
   ```
-
-#### Verify Installation (Skip if using Firebase Studio)
 
 After installation, verify your setup by running:
 
@@ -65,7 +63,7 @@ flutter doctor
 
 This command checks your environment and displays a report of the status of your Flutter installation.
 
-**For detailed step-by-step instructions**, refer to [Worksheet 1 — Introduction to Flutter](https://manighahrmani.github.io/sandwich_shop/worksheet-1.html), which covers the complete setup process for all three options.
+For detailed step-by-step instructions, refer to [Worksheet 1 — Introduction to Flutter](https://manighahrmani.github.io/sandwich_shop/worksheet-1.html), which covers the complete setup process for all three options.
 
 ### Fork the Repository
 
@@ -134,6 +132,20 @@ Here is non-exhaustive list of features you need to implement:
 The coursework document (also available on Moodle and the [homepage](https://manighahrmani.github.io/sandwich_shop/)) provided more details on the assessment criteria:
 
 **[Coursework Document](https://portdotacdotuk-my.sharepoint.com/:w:/g/personal/mani_ghahremani_port_ac_uk/EbM1UcwOHMRLmcKeI0btHqYBeZ3ADWjyN0EXBWdHLhsO_g?e=FDEQLt)**
+
+## Submission
+
+You need submit the link to your forked repository on Moodle before the deadline. Open the Moodle page for Programming Applications and Programming Languages (M30235) or User Experience Design and Implementation (M32605) and find the submission section titled "Item 1 - Set exercise (coursework) (CW)". See below:
+
+![Moodle Submission Page](https://raw.githubusercontent.com/manighahrmani/sandwich_shop/refs/heads/main/images/screenshot_moodle_submission_section.png)
+
+Open the On time or the Late/Extenuating Circumstances submission link and add click on Add submission. There you will find an editable Online text field. Paste the link to the GitHub repository for your coursework in the provided text field and click on Save changes. You are **not** submitting any files for this coursework.
+
+![Moodle Submission Online Text](https://raw.githubusercontent.com/manighahrmani/sandwich_shop/refs/heads/main/images/screenshot_moodle_submission_online_text.png)
+
+Make sure the repository is public. Check to see if it opens in an incognito/private window (you should not get a 404 error).
+
+⚠️ You can edit the link before the deadline, but do not edit the repository (do not make new commits) after the deadline. I will label your submission as late if you do this.
 
 ## Project Structure
 
