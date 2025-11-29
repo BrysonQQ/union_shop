@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'view_models/cart_view_model.dart';
 import 'login_page.dart';
+import 'package:union_shop/cap_page.dart';
 
   void main() {
   runApp(
@@ -52,6 +53,7 @@ class UnionShopApp extends StatelessWidget {
   '/pen': (context) => const PenPage(),
   '/bag': (context) => const BagPage(),
   '/login': (context) => const LoginPage(),
+  '/cap': (context) => const CapPage(),
 
 },
     );
