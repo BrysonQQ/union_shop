@@ -1,40 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../view_models/cart_view_model.dart';
 
-class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+class NotebookPage extends StatelessWidget {
+  const NotebookPage({super.key});
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
-  void placeholderCallbackForButtons() {
-    // This is the event handler for buttons that don't work yet
-  }
+  void placeholderCallbackForButtons() {}
 
   @override
   Widget build(BuildContext context) {
+    final cartViewModel = Provider.of<CartViewModel>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Header
             Container(
               height: 100,
               color: Colors.white,
               child: Column(
                 children: [
-                  // Top banner
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     color: const Color(0xFF4d2963),
                     child: const Text(
-                      'MOST STUDENTS CHOICES',
+                      'Notebook - USUP Shop',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
-                  // Main header
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -130,14 +128,12 @@ class ProductPage extends StatelessWidget {
               ),
             ),
 
-            // Product details
             Container(
               color: Colors.white,
               padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Product image
                   Container(
                     height: 300,
                     width: double.infinity,
@@ -145,92 +141,110 @@ class ProductPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.grey[200],
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            color: Colors.grey[300],
-                            child: const Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.image_not_supported,
-                                    size: 64,
-                                    color: Colors.grey,
-                                  ),
-                                  SizedBox(height: 8),
-                                  Text(
-                                    'Image unavailable',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
+                    child: Image.asset(
+                      'assets/images/notebook.png',
+                      fit: BoxFit.contain,
                     ),
                   ),
 
                   const SizedBox(height: 24),
-
-                  // Product name
                   const Text(
-                    'ITEMS',
+                    'Notebook',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                   ),
-
                   const SizedBox(height: 12),
-
-                  // Product price
                   const Text(
-                    '£15.00',
+                    '£6.00',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF4d2963),
                     ),
                   ),
-
                   const SizedBox(height: 24),
-
-                  // Product description
                   const Text(
-                    'Description',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'This is our classic style, many students like it.',
+                    'Special notebook for school.',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
                       height: 1.5,
                     ),
                   ),
+                  const SizedBox(height: 32),
+Container(
+  width: double.infinity,
+  height: 50,
+  child: ElevatedButton(
+    onPressed: () {
+      cartViewModel.addToCart();
+      cartViewModel.showAddToCartMessage(context, 'notebook');
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFF4d2963),
+      foregroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+    child: const Text(
+      'ADD TO CART',
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
+),
+
+const SizedBox(height: 12),
+Container(
+  width: double.infinity,
+  height: 50,
+  child: OutlinedButton(
+    onPressed: () {
+      cartViewModel.addToCart();
+      cartViewModel.showAddToCartMessage(context, 'notebook');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Proceeding to checkout!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    },
+    style: OutlinedButton.styleFrom(
+      side: const BorderSide(color: Color(0xFF4d2963)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+    child: const Text(
+      'BUY NOW',
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: Color(0xFF4d2963),
+      ),
+    ),
+  ),
+),
+
+
+
+
                 ],
               ),
             ),
 
-            // Footer
             Container(
               width: double.infinity,
               color: Colors.grey[50],
               padding: const EdgeInsets.all(24),
               child: const Text(
-                'Product Footer',
+                'University of Portsmouth Students Union',
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,

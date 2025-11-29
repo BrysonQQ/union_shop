@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/product_page.dart';
+import 'package:union_shop/about_us_page.dart';
+import 'package:union_shop/collections_page.dart';
+import 'package:union_shop/collection_page.dart';
+import 'package:union_shop/tshirt_page.dart';
+import 'package:union_shop/bag_page.dart';
+import 'package:union_shop/notebook_page.dart';
+import 'package:union_shop/pen_page.dart';
+import 'package:union_shop/waterbottle_page.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'view_models/cart_view_model.dart';
+import 'login_page.dart';
 
-void main() {
-  runApp(const UnionShopApp());
+  void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CartViewModel(),
+      child: const UnionShopApp(),
+    ),
+  );
 }
 
 class UnionShopApp extends StatelessWidget {
@@ -21,7 +38,22 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
-      routes: {'/product': (context) => const ProductPage()},
+      routes: {
+  '/product': (context) => const ProductPage(),
+  '/about': (context) => const AboutUsPage(),
+  '/collections': (context) => const CollectionsPage(),
+  '/collection': (context) {
+    final args = ModalRoute.of(context)!.settings.arguments as String;
+    return CollectionPage(category: args);
+  },
+  '/tshirt': (context) => const TshirtPage(),
+  '/notebook': (context) => const NotebookPage(),
+  '/waterbottle': (context) => const WaterbottlePage(),
+  '/pen': (context) => const PenPage(),
+  '/bag': (context) => const BagPage(),
+  '/login': (context) => const LoginPage(),
+
+},
     );
   }
 }
@@ -59,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     color: const Color(0xFF4d2963),
                     child: const Text(
-                      'PLACEHOLDER HEADER TEXT',
+                      'USUP shop - goodies for Portsmouth students',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
@@ -99,6 +131,22 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 IconButton(
                                   icon: const Icon(
+                                    Icons.info_outline,
+                                    size: 18,
+                                    color: Colors.grey,
+                                  ),
+                                  padding: const EdgeInsets.all(8),
+                                  constraints: const BoxConstraints(
+                                    minWidth: 32,
+                                    minHeight: 32,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/about');
+                                 },
+                                ),
+      
+                                IconButton(
+                                  icon: const Icon(
                                     Icons.search,
                                     size: 18,
                                     color: Colors.grey,
@@ -121,7 +169,9 @@ class HomeScreen extends StatelessWidget {
                                     minWidth: 32,
                                     minHeight: 32,
                                   ),
-                                  onPressed: placeholderCallbackForButtons,
+                                  onPressed: () {
+                                   Navigator.pushNamed(context, '/login');
+                                  },
                                 ),
                                 IconButton(
                                   icon: const Icon(
@@ -193,7 +243,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Text(
-                          'Placeholder Hero Title',
+                          'USUP SHOP',
                           style: TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
@@ -203,7 +253,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         const Text(
-                          "This is placeholder text for the hero section.",
+                          "Goodies for Portsmouth Students",
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -241,7 +291,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const Text(
-                      'PRODUCTS SECTION',
+                      'Popular Products',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -256,30 +306,26 @@ class HomeScreen extends StatelessWidget {
                           MediaQuery.of(context).size.width > 600 ? 2 : 1,
                       crossAxisSpacing: 24,
                       mainAxisSpacing: 48,
-                      children: const [
+                      children: [
                         ProductCard(
-                          title: 'Placeholder Product 1',
-                          price: '£10.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                          title: 'T-shirt',
+                          price: '£18.00',
+                          imageAsset: 'assets/images/tshirt.png',
                         ),
                         ProductCard(
-                          title: 'Placeholder Product 2',
-                          price: '£15.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                          title: ' Bag',
+                          price: '£16.00',
+                          imageAsset: 'assets/images/bag.png',
                         ),
                         ProductCard(
-                          title: 'Placeholder Product 3',
+                          title: 'Water Bottle',
                           price: '£20.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                          imageAsset: 'assets/images/waterbottle.png',
                         ),
                         ProductCard(
-                          title: 'Placeholder Product 4',
-                          price: '£25.00',
-                          imageUrl:
-                              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                          title: 'Notebook',
+                          price: '£8.00',
+                          imageAsset: 'assets/images/notebook.png',
                         ),
                       ],
                     ),
@@ -287,14 +333,27 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Footer
+            Container(
+                      padding: const EdgeInsets.only(top: 24),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/collections');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF4d2963),
+                          foregroundColor: Colors.white,
+                        ),
+                        child: const Text('View All'),
+                      ),
+                    ),
+                  
+            
             Container(
               width: double.infinity,
               color: Colors.grey[50],
               padding: const EdgeInsets.all(24),
               child: const Text(
-                'Placeholder Footer',
+                'University of Portsmouth Students Union',
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
@@ -302,6 +361,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+
           ],
         ),
       ),
@@ -309,16 +369,20 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+
+          
+
+
 class ProductCard extends StatelessWidget {
   final String title;
   final String price;
-  final String imageUrl;
+  final String imageAsset;
 
   const ProductCard({
     super.key,
     required this.title,
     required this.price,
-    required this.imageUrl,
+    required this.imageAsset,
   });
 
   @override
@@ -332,7 +396,7 @@ class ProductCard extends StatelessWidget {
         children: [
           Expanded(
             child: Image.network(
-              imageUrl,
+              imageAsset,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
@@ -365,3 +429,5 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+
+
