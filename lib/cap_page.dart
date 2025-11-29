@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../view_models/cart_view_model.dart';
 
-class PenPage extends StatelessWidget {
-  const PenPage({super.key});
+class CapPage extends StatelessWidget {
+  const CapPage({super.key});
   
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -28,7 +28,7 @@ class PenPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     color: const Color(0xFF4d2963),
                     child: const Text(
-                      'Notebook - USUP Shop',
+                      'Cap - USUP Shop',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
@@ -142,14 +142,14 @@ class PenPage extends StatelessWidget {
                       color: Colors.grey[200],
                     ),
                     child: Image.asset(
-                      'assets/images/pen.png',
+                      'assets/images/cap.png',
                       fit: BoxFit.contain,
                     ),
                   ),
 
                   const SizedBox(height: 24),
                   const Text(
-                    'Pen',
+                    'cap',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -158,7 +158,7 @@ class PenPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   const Text(
-                    '£4.00',
+                    '£12.00',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -167,7 +167,7 @@ class PenPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   const Text(
-                    'Useful school supplies.',
+                    'A stylish cap featuring the University of Portsmouth logo, perfect for showing your school spirit while keeping the sun out of your eyes.',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
@@ -181,7 +181,7 @@ Container(
   child: ElevatedButton(
     onPressed: () {
       cartViewModel.addToCart();
-      cartViewModel.showAddToCartMessage(context, 'pen');
+      cartViewModel.showAddToCartMessage(context, 'cap');
     },
     style: ElevatedButton.styleFrom(
       backgroundColor: const Color(0xFF4d2963),
@@ -207,7 +207,7 @@ Container(
   child: OutlinedButton(
     onPressed: () {
       cartViewModel.addToCart();
-      cartViewModel.showAddToCartMessage(context, 'pen');
+      cartViewModel.showAddToCartMessage(context, 'cap');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Proceeding to checkout!'),
