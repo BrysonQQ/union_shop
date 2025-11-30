@@ -379,7 +379,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                            const SizedBox(height: 8),
                            const Text(
-                          '© 2024 UPSU Shop. All rights reserved.',
+                          '© 2024 UPSU Shop.',
                            style: TextStyle(
                              color: Colors.grey,
                                fontSize: 12,
