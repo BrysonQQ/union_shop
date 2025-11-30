@@ -144,7 +144,7 @@ class AboutUsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'This is the official student shop for University of Portsmouth students,We have a wide range of items for you to choose.',
+                    'This is the official student shop for University of Portsmouth students,We have a wide range of items for you to choose.You can find clothing, accessories, stationery, and more. All our products are designed with students in mind, ensuring quality and affordability.Also, a portion of our proceeds goes towards supporting student activities and initiatives on campus.',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
