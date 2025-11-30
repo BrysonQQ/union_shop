@@ -314,21 +314,25 @@ class HomeScreen extends StatelessWidget {
                           title: 'T-shirt',
                           price: '£18.00',
                           imageAsset: 'assets/images/tshirt.png',
+                          routeName: '/tshirt',
                         ),
                         ProductCard(
-                          title: ' Bag',
+                          title: 'Bag',
                           price: '£16.00',
                           imageAsset: 'assets/images/bag.png',
+                          routeName: '/bag',
                         ),
                         ProductCard(
                           title: 'Water Bottle',
                           price: '£20.00',
                           imageAsset: 'assets/images/waterbottle.png',
+                          routeName: '/waterbottle',
                         ),
                         ProductCard(
                           title: 'Notebook',
                           price: '£8.00',
                           imageAsset: 'assets/images/notebook.png',
+                          routeName: '/notebook',
                         ),
                       ],
                     ),
@@ -397,25 +401,28 @@ class ProductCard extends StatelessWidget {
   final String title;
   final String price;
   final String imageAsset;
+  final String? routeName;
 
   const ProductCard({
     super.key,
     required this.title,
     required this.price,
     required this.imageAsset,
+    this.routeName,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        final target = routeName ?? '/product';
+        Navigator.pushNamed(context, target);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Image.network(
+            child: Image.asset(
               imageAsset,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
