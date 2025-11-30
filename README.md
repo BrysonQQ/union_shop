@@ -141,6 +141,10 @@ The table below is an almost comprehensive list of features present on the websi
 
 This repository is a starter Flutter project for the Union Shop coursework. The app recreates a simplified version of the Student Union e-commerce pages and provides a foundation for the coursework tasks.
 
+Introduction
+------------------
+Union Shop is a small e-commerce demo built with Flutter. It lets users browse product listings, open product detail pages (images, description and price), and view a simple shopping bag UI. The code demonstrates routing, basic state management (a cart repository + view model), responsive layouts for mobile, and a set of unit/widget tests to validate behavior.
+
 Overview
 --------
 Small, focused project intended for mobile view (web target recommended). Build features incrementally and follow the coursework worksheets for guidance.
