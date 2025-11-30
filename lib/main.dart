@@ -352,28 +352,45 @@ class HomeScreen extends StatelessWidget {
                   
             
             Container(
-              width: double.infinity,
-              color: Colors.grey[50],
-              padding: const EdgeInsets.all(24),
-              child: const Text(
-                'University of Portsmouth Students Union',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-          
+                       width: double.infinity,
+                       color: Colors.grey[50],
+                       padding: const EdgeInsets.all(24),
+                       child: const Text(
+                          'University of Portsmouth Students Union',
+                          style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                     ),
+                      Row(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                         Text('Privacy Policy', 
+                           style: TextStyle(color: const Color.fromARGB(185, 0, 0, 0), fontSize: 14)),
+                           const SizedBox(width: 16),
+                         Text('Terms of Service', 
+                           style: TextStyle(color: const Color.fromARGB(158, 0, 0, 0), fontSize: 14)),
+                            const SizedBox(width: 16),
+                         Text('If You Need Help,please contact us:+44 1234567890', 
+                           style: TextStyle(color: const Color.fromARGB(107, 0, 0, 0), fontSize: 14)),
+                       ],
+                    ),
+                           const SizedBox(height: 8),
+                           const Text(
+                          '© 2024 UPSU Shop. All rights reserved.',
+                           style: TextStyle(
+                             color: Colors.grey,
+                               fontSize: 12,
+                           ),
+                         ),
+                       ],
+                     ),
+                   ),
+                  );
+                }
+              }
 
 
 class ProductCard extends StatelessWidget {
