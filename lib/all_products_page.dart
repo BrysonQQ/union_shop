@@ -154,11 +154,10 @@ class AllProductsPage extends StatelessWidget {
                     children: [
                       const ProductCard(title: 'T-shirt', price: '£18.00', imageAsset: 'assets/images/tshirt.png'),
                       const ProductCard(title: 'Bag', price: '£16.00', imageAsset: 'assets/images/bag.png'),
-                      const ProductCard(title: 'Water Bottle', price: '£20.00', imageAsset: 'assets/images/waterbottle.png'),
-                      const ProductCard(title: 'Notebook', price: '£8.00', imageAsset: 'assets/images/notebook.png'),
-                      const ProductCard(title: 'Pen', price: '£2.50', imageAsset: 'assets/images/pen.png'),
+                      const ProductCard(title: 'Water Bottle', price: '£8.00', imageAsset: 'assets/images/waterbottle.png'),
+                      const ProductCard(title: 'Notebook', price: '£6.00', imageAsset: 'assets/images/notebook.png'),
+                      const ProductCard(title: 'Pen', price: '£4.00', imageAsset: 'assets/images/pen.png'),
                       const ProductCard(title: 'Cap', price: '£12.00', imageAsset: 'assets/images/cap.png'),
-                      // Newly added sport products
                       const ProductCard(title: 'Basketball', price: '£20.00', salePrice: '£15.00', imageAsset: 'assets/images/basketball.png'),
                       const ProductCard(title: 'Football', price: '£20.00', salePrice: '£15.00', imageAsset: 'assets/images/football.png'),
                     ],
@@ -249,7 +248,6 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              // show sale price if provided
               if (salePrice != null)
                 Row(
                   children: [

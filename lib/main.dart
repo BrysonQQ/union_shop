@@ -330,13 +330,13 @@ class HomeScreen extends StatelessWidget {
                         ),
                         ProductCard(
                           title: 'Water Bottle',
-                          price: '£20.00',
+                          price: '£8.00',
                           imageAsset: 'assets/images/waterbottle.png',
                           routeName: '/waterbottle',
                         ),
                         ProductCard(
                           title: 'Notebook',
-                          price: '£8.00',
+                          price: '£6.00',
                           imageAsset: 'assets/images/notebook.png',
                           routeName: '/notebook',
                         ),
