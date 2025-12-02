@@ -159,8 +159,8 @@ class AllProductsPage extends StatelessWidget {
                       const ProductCard(title: 'Pen', price: '£2.50', imageAsset: 'assets/images/pen.png'),
                       const ProductCard(title: 'Cap', price: '£12.00', imageAsset: 'assets/images/cap.png'),
                       // Newly added sport products
-                      const ProductCard(title: 'Basketball', price: '£20.00', imageAsset: 'assets/images/basketball.png'),
-                      const ProductCard(title: 'Football', price: '£20.00', imageAsset: 'assets/images/football.png'),
+                      const ProductCard(title: 'Basketball', price: '£20.00', salePrice: '£15.00', imageAsset: 'assets/images/basketball.png'),
+                      const ProductCard(title: 'Football', price: '£20.00', salePrice: '£15.00', imageAsset: 'assets/images/football.png'),
                     ],
                   ),
                 ],
@@ -191,12 +191,14 @@ class AllProductsPage extends StatelessWidget {
 class ProductCard extends StatelessWidget {
   final String title;
   final String price;
+  final String? salePrice;
   final String imageAsset;
 
   const ProductCard({
     super.key,
     required this.title,
     required this.price,
+    this.salePrice,
     required this.imageAsset,
   });
 
@@ -247,13 +249,37 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              Text(
-                price,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
+              // show sale price if provided
+              if (salePrice != null)
+                Row(
+                  children: [
+                    Text(
+                      price,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey,
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      salePrice!,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: Color(0xFF4d2963),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                )
+              else
+                Text(
+                  price,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
                 ),
-              ),
             ],
           ),
         ),
