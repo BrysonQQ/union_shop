@@ -1,3 +1,8 @@
+// 目的：对 CartRepository 的基本行为进行单元测试。
+// - 验证初始 itemCount 为 0。
+// - 验证 addItem() 会将计数加 1。
+// - 验证 clear() 会重置计数为 0。
+// 这些测试确保仓库层的核心状态逻辑正确。
 import 'package:flutter_test/flutter_test.dart';
 import 'package:union_shop/repositories/cart_repository.dart';
 

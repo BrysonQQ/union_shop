@@ -1,3 +1,8 @@
+// 目的：对 ProductPage 的 widget 测试。
+// - 验证页面在移动端尺寸下正确渲染关键元素（标题、价格、描述）。
+// - 验证 header 上的图标存在（search、bag、menu）。
+// - 验证底部 footer 文本存在。
+// 这些测试是对 UI 关键组成部分的集成式断言（不涉及网络请求）。
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:union_shop/product_page.dart';
@@ -16,6 +21,7 @@ void main() {
   }
 
   group('Product Page Tests', () {
+    // 检查主要 UI 元素是否存在：标题、价格、描述
     testWidgets('should display product page with basic elements', (tester) async {
       binding.window.physicalSizeTestValue = const Size(375, 812);
       binding.window.devicePixelRatioTestValue = 1.0;
@@ -29,7 +35,8 @@ void main() {
       expect(find.text('Description'), findsOneWidget);
     });
 
-    testWidgets('should display header icons', (tester) async {
+  // 检查 header 上的常用图标是否渲染
+  testWidgets('should display header icons', (tester) async {
       binding.window.physicalSizeTestValue = const Size(375, 812);
       binding.window.devicePixelRatioTestValue = 1.0;
 
@@ -42,7 +49,8 @@ void main() {
       expect(find.byIcon(Icons.menu), findsOneWidget);
     });
 
-    testWidgets('should display footer', (tester) async {
+  // 检查页面底部的 footer 文本是否可见
+  testWidgets('should display footer', (tester) async {
       binding.window.physicalSizeTestValue = const Size(375, 812);
       binding.window.devicePixelRatioTestValue = 1.0;
 

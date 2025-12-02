@@ -172,6 +172,7 @@ Key source files (shallow description to help navigation):
 - `lib/product_page.dart` — Product details screen (images, title, price, description, footer).
 - `lib/about_us_page.dart` — Simple About page content.
 - `lib/collection_page.dart` & `lib/collections_page.dart` — Collection listing and collection detail stubs.
+- `lib/all_products_page.dart` — "All Products" listing page (opened from the homepage "View All" button).
 - `lib/login_page.dart` — Login/signup UI skeleton.
 - `lib/bag_page.dart` — Shopping cart UI (simple cart view).
 - `lib/tshirt_page.dart`, `lib/pen_page.dart`, `lib/cap_page.dart`, `lib/waterbottle_page.dart`, `lib/notebook_page.dart` — Example product pages / templates used by the app.

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/product_page.dart';
+import 'package:union_shop/all_products_page.dart';
 import 'package:union_shop/about_us_page.dart';
 import 'package:union_shop/collections_page.dart';
 import 'package:union_shop/collection_page.dart';
@@ -8,7 +9,6 @@ import 'package:union_shop/bag_page.dart';
 import 'package:union_shop/notebook_page.dart';
 import 'package:union_shop/pen_page.dart';
 import 'package:union_shop/waterbottle_page.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'view_models/cart_view_model.dart';
 import 'login_page.dart';
@@ -41,6 +41,7 @@ class UnionShopApp extends StatelessWidget {
       // In your browser, try this link: http://localhost:49856/#/product
       routes: {
   '/product': (context) => const ProductPage(),
+      '/all': (context) => const AllProductsPage(),
   '/about': (context) => const AboutUsPage(),
   '/collections': (context) => const CollectionsPage(),
   '/collection': (context) {
@@ -49,6 +50,7 @@ class UnionShopApp extends StatelessWidget {
   },
   '/tshirt': (context) => const TshirtPage(),
   '/notebook': (context) => const NotebookPage(),
+  '/bottle': (context) => const WaterbottlePage(),
   '/waterbottle': (context) => const WaterbottlePage(),
   '/pen': (context) => const PenPage(),
   '/bag': (context) => const BagPage(),
@@ -340,11 +342,11 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+                    Container(
                       padding: const EdgeInsets.only(top: 24),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/collections');
+                          Navigator.pushNamed(context, '/all');
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF4d2963),

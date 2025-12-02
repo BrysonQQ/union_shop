@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
-class AboutUsPage extends StatelessWidget {
-  const AboutUsPage({super.key});
+class AllProductsPage extends StatelessWidget {
+  const AllProductsPage({super.key});
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
-  void placeholderCallbackForButtons() {
-  }
-@override
+  void placeholderCallbackForButtons() {}
+
+  @override
   Widget build(BuildContext context) {
+    // products are listed directly in the GridView children below (matches CollectionPage style)
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -27,7 +29,7 @@ class AboutUsPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     color: const Color(0xFF4d2963),
                     child: const Text(
-                      'About Us - USUP Shop',
+                      'ALL PRODUCTS',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
@@ -127,6 +129,8 @@ class AboutUsPage extends StatelessWidget {
                 ],
               ),
             ),
+
+            // Products Section
             Container(
               color: Colors.white,
               padding: const EdgeInsets.all(24),
@@ -134,25 +138,34 @@ class AboutUsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'About USUP Shop',
+                    'All Products',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'This is the official student shop for University of Portsmouth students,We have a wide range of items for you to choose.You can find clothing, accessories, stationery, and more. All our products are designed with students in mind, ensuring quality and affordability.Also, a portion of our proceeds goes towards supporting student activities and initiatives on campus.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                      height: 1.5,
-                    ),
+                  const SizedBox(height: 24),
+                  GridView.count(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: MediaQuery.of(context).size.width > 600 ? 3 : 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    children: [
+                      const ProductCard(title: 'T-shirt', price: '£18.00', imageAsset: 'assets/images/tshirt.png'),
+                      const ProductCard(title: 'Bag', price: '£16.00', imageAsset: 'assets/images/bag.png'),
+                      const ProductCard(title: 'Water Bottle', price: '£20.00', imageAsset: 'assets/images/waterbottle.png'),
+                      const ProductCard(title: 'Notebook', price: '£8.00', imageAsset: 'assets/images/notebook.png'),
+                      const ProductCard(title: 'Pen', price: '£2.50', imageAsset: 'assets/images/pen.png'),
+                      const ProductCard(title: 'Cap', price: '£12.00', imageAsset: 'assets/images/cap.png'),
+                    ],
                   ),
                 ],
               ),
             ),
+
+            // Footer
             Container(
               width: double.infinity,
               color: Colors.grey[50],
@@ -173,3 +186,72 @@ class AboutUsPage extends StatelessWidget {
   }
 }
 
+class ProductCard extends StatelessWidget {
+  final String title;
+  final String price;
+  final String imageAsset;
+
+  const ProductCard({
+    super.key,
+    required this.title,
+    required this.price,
+    required this.imageAsset,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        if (title == 'T-shirt') {
+          Navigator.pushNamed(context, '/tshirt');
+        } else if (title == 'Notebook') {
+          Navigator.pushNamed(context, '/notebook');
+        } else if (title == 'Bag') {
+          Navigator.pushNamed(context, '/bag');
+        } else if (title == 'Water Bottle') {
+          Navigator.pushNamed(context, '/bottle');
+        } else if (title == 'Cap') {
+          Navigator.pushNamed(context, '/cap');
+        } else if (title == 'Pen') {
+          Navigator.pushNamed(context, '/pen');
+        }
+      },
+      child: Card(
+        elevation: 2,
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 120,
+                width: double.infinity,
+                color: Colors.grey[200],
+                child: Image.asset(
+                  imageAsset,
+                  fit: BoxFit.contain,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                price,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
