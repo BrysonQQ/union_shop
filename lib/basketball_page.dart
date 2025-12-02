@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../view_models/cart_view_model.dart';
 
-class AllProductsPage extends StatelessWidget {
-  const AllProductsPage({super.key});
+class BasketballPage extends StatelessWidget {
+  const BasketballPage({super.key});
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -9,31 +11,29 @@ class AllProductsPage extends StatelessWidget {
 
   void placeholderCallbackForButtons() {}
 
+
   @override
   Widget build(BuildContext context) {
-
+    final cartViewModel = Provider.of<CartViewModel>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Header
             Container(
               height: 100,
               color: Colors.white,
               child: Column(
                 children: [
-                  // Top banner
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     color: const Color(0xFF4d2963),
                     child: const Text(
-                      'ALL PRODUCTS',
+                      'Basketball - USUP Shop',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
-                  // Main header
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -129,45 +129,113 @@ class AllProductsPage extends StatelessWidget {
               ),
             ),
 
-            // Products Section
             Container(
               color: Colors.white,
               padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Container(
+                    height: 300,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.grey[200],
+                    ),
+                    child: Image.asset(
+                      'assets/images/basketball.png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
                   const Text(
-                    'All Products',
+                    'basketball',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  GridView.count(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    crossAxisCount: MediaQuery.of(context).size.width > 600 ? 3 : 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    children: [
-                      const ProductCard(title: 'T-shirt', price: '£18.00', imageAsset: 'assets/images/tshirt.png'),
-                      const ProductCard(title: 'Bag', price: '£16.00', imageAsset: 'assets/images/bag.png'),
-                      const ProductCard(title: 'Water Bottle', price: '£20.00', imageAsset: 'assets/images/waterbottle.png'),
-                      const ProductCard(title: 'Notebook', price: '£8.00', imageAsset: 'assets/images/notebook.png'),
-                      const ProductCard(title: 'Pen', price: '£2.50', imageAsset: 'assets/images/pen.png'),
-                      const ProductCard(title: 'Cap', price: '£12.00', imageAsset: 'assets/images/cap.png'),
-                      // Newly added sport products
-                      const ProductCard(title: 'Basketball', price: '£20.00', imageAsset: 'assets/images/basketball.png'),
-                      const ProductCard(title: 'Football', price: '£20.00', imageAsset: 'assets/images/football.png'),
-                    ],
+                  const SizedBox(height: 12),
+                  const Text(
+                    '£20.00',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF4d2963),
+                    ),
                   ),
+                  const SizedBox(height: 24),
+                  const Text(
+                    'A high-quality basketball suitable for all levels of play. Durable and designed for optimal performance on the court.',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                      height: 1.5,
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+Container(
+  width: double.infinity,
+  height: 50,
+  child: ElevatedButton(
+    onPressed: () {
+      cartViewModel.addToCart();
+      cartViewModel.showAddToCartMessage(context, 'basketball');
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFF4d2963),
+      foregroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+    child: const Text(
+      'ADD TO CART',
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
+),
+
+const SizedBox(height: 12),
+Container(
+  width: double.infinity,
+  height: 50,
+  child: OutlinedButton(
+    onPressed: () {
+      cartViewModel.addToCart();
+      cartViewModel.showAddToCartMessage(context, 'basketball');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Proceeding to checkout!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    },
+    style: OutlinedButton.styleFrom(
+      side: const BorderSide(color: Color(0xFF4d2963)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+    child: const Text(
+      'BUY NOW',
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: Color(0xFF4d2963),
+      ),
+    ),
+  ),
+),
                 ],
               ),
             ),
 
-            // Footer
             Container(
               width: double.infinity,
               color: Colors.grey[50],
@@ -182,80 +250,6 @@ class AllProductsPage extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProductCard extends StatelessWidget {
-  final String title;
-  final String price;
-  final String imageAsset;
-
-  const ProductCard({
-    super.key,
-    required this.title,
-    required this.price,
-    required this.imageAsset,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (title == 'T-shirt') {
-          Navigator.pushNamed(context, '/tshirt');
-        } else if (title == 'Notebook') {
-          Navigator.pushNamed(context, '/notebook');
-        } else if (title == 'Bag') {
-          Navigator.pushNamed(context, '/bag');
-        } else if (title == 'Water Bottle') {
-          Navigator.pushNamed(context, '/bottle');
-        } else if (title == 'Cap') {
-          Navigator.pushNamed(context, '/cap');
-        } else if (title == 'Pen') {
-          Navigator.pushNamed(context, '/pen');
-        } else if (title == 'Basketball') {
-          Navigator.pushNamed(context, '/basketball');
-        } else if (title == 'Football') {
-          Navigator.pushNamed(context, '/football');
-        }
-      },
-      child: Card(
-        elevation: 2,
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 120,
-                width: double.infinity,
-                color: Colors.grey[200],
-                child: Image.asset(
-                  imageAsset,
-                  fit: BoxFit.contain,
-                ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                price,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

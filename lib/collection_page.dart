@@ -166,6 +166,8 @@ class CollectionPage extends StatelessWidget {
                       const ProductCard(title: 'Pen', price: '£4.00', imageAsset: 'assets/images/pen.png'),
                     ] : category == 'Other Items' ? [ 
                      const ProductCard(title: 'Water Bottle', price: '£8.00', imageAsset: 'assets/images/waterbottle.png'),
+                     const ProductCard(title: 'Basketball', price: '£20.00', imageAsset: 'assets/images/basketball.png'),
+                     const ProductCard(title: 'Football', price: '£20.00', imageAsset: 'assets/images/football.png'),
                     ] : [],
                   ),             
                 ],
@@ -220,6 +222,10 @@ class ProductCard extends StatelessWidget {
           Navigator.pushNamed(context, '/cap');
         } else if (title == 'Pen') {
           Navigator.pushNamed(context, '/pen');
+        } else if (title == 'Basketball') {
+          Navigator.pushNamed(context, '/basketball');
+        } else if (title == 'Football') {
+          Navigator.pushNamed(context, '/football');
         }
       },
       child: Card(

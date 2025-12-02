@@ -6,6 +6,8 @@ import 'package:union_shop/collections_page.dart';
 import 'package:union_shop/collection_page.dart';
 import 'package:union_shop/tshirt_page.dart';
 import 'package:union_shop/bag_page.dart';
+import 'package:union_shop/basketball_page.dart';
+import 'package:union_shop/football_page.dart';
 import 'package:union_shop/notebook_page.dart';
 import 'package:union_shop/pen_page.dart';
 import 'package:union_shop/waterbottle_page.dart';
@@ -49,6 +51,8 @@ class UnionShopApp extends StatelessWidget {
     return CollectionPage(category: args);
   },
   '/tshirt': (context) => const TshirtPage(),
+  '/basketball': (context) => const BasketballPage(),
+  '/football': (context) => const FootballPage(),
   '/notebook': (context) => const NotebookPage(),
   '/bottle': (context) => const WaterbottlePage(),
   '/waterbottle': (context) => const WaterbottlePage(),
