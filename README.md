@@ -173,6 +173,27 @@ Key source files (shallow description to help navigation):
 - `lib/about_us_page.dart` — Simple About page content.
 - `lib/collection_page.dart` & `lib/collections_page.dart` — Collection listing and collection detail stubs.
 - `lib/all_products_page.dart` — "All Products" listing page (opened from the homepage "View All" button).
+ - `lib/all_products_page.dart` — "All Products" listing page (opened from the homepage "View All" button).
+ - `lib/basketball_page.dart` — Basketball product detail page (image, description, original+sale price display).
+ - `lib/football_page.dart` — Football product detail page (image, description, original+sale price display).
+ - Tests: Basic unit and widget tests are located under the `test/` directory. Run them with `flutter test`; they cover core view models and important UI pages.
+
+Quick verification (run locally)
+--------------------------------
+After pulling the latest changes, refresh assets and run the app:
+
+```bash
+flutter pub get
+flutter clean
+flutter run -d chrome
+```
+
+Open the app in mobile view (Chrome DevTools device toolbar). To verify the new changes:
+
+- Home → "View All": shows all products; Basketball/Football show sale price (original struck-through + sale price).
+- Product Categories → "On Sale": shows only Basketball and Football with sale prices.
+
+If updated assets are not visible, run `flutter clean` and restart the app; asset changes require a rebuild.
 - `lib/login_page.dart` — Login/signup UI skeleton.
 - `lib/bag_page.dart` — Shopping cart UI (simple cart view).
 - `lib/tshirt_page.dart`, `lib/pen_page.dart`, `lib/cap_page.dart`, `lib/waterbottle_page.dart`, `lib/notebook_page.dart` — Example product pages / templates used by the app.
