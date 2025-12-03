@@ -162,7 +162,7 @@ class CollectionsPage extends StatelessWidget {
                       ),
                        CategoryCard(
                          title: 'Other Items',
-                         productCount: '1 product',
+                         productCount: '3 product',
                          imageAsset: 'assets/images/waterbottle.png',
                       ),
                       CategoryCard(

@@ -37,10 +37,9 @@ class UnionShopApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
       ),
       home: const HomeScreen(),
-      // By default, the app starts at the '/' route, which is the HomeScreen
+
       initialRoute: '/',
-      // When navigating to '/product', build and return the ProductPage
-      // In your browser, try this link: http://localhost:49856/#/product
+      // Define the routes for navigation
       routes: {
   '/product': (context) => const ProductPage(),
       '/all': (context) => const AllProductsPage(),
@@ -78,7 +77,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   void placeholderCallbackForButtons() {
-    // This is the event handler for buttons that don't work yet
+    
   }
 
   @override
@@ -384,7 +383,7 @@ class HomeScreen extends StatelessWidget {
                            style: TextStyle(color: const Color.fromARGB(158, 0, 0, 0), fontSize: 14)),
                             const SizedBox(width: 16),
                          Text('If You Need Help,please contact us:+44 1234567890', 
-                           style: TextStyle(color: const Color.fromARGB(107, 0, 0, 0), fontSize: 14)),
+                           style: TextStyle(color: const Color.fromARGB(158, 0, 0, 0), fontSize: 14)),
                        ],
                     ),
                            const SizedBox(height: 8),
